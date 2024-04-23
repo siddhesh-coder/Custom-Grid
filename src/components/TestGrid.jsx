@@ -1,18 +1,15 @@
-import "./App.css";
-import Col from "./components/Col";
-import Grid from "./components/Grid";
-import Row from "./components/Row";
-import TestGrid from "./components/TestGrid";
-import { GridProvider } from "./utils/appContext";
+import React from 'react'
+import { GridProvider } from '../utils/appContext'
+import Grid from './Grid'
+import Row from './Row'
+import Col from './Col'
 
-function App() {
+const TestGrid = () => {
   return (
-    <div className="app">
-      <h1>Grid 1</h1>
-      <GridProvider>
+    <GridProvider>
       <Grid
         gap={10}
-        spacing={20}
+        spacing={40}
         wrap="wrap"
         // direction={"row"} //!also try this
         // justifyContent={"space-evenly"}
@@ -42,10 +39,7 @@ function App() {
         </Row>
       </Grid>
       </GridProvider>
-      <h1>Grid 2</h1>
-      <TestGrid/>
-    </div>
-  );
+  )
 }
 
-export default App;
+export default TestGrid
