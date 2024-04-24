@@ -1,19 +1,27 @@
-import React, { createContext, useState } from "react";
+import React, { createContext } from "react";
 
-const GridContext = createContext();
+const initState = {
+  gap: 10,
+  direction: "row",
+  justifyContent: "flex-start",
+  alignItems: "flex-start",
+  spacing: 0,
+};
 
-const GridProvider = ({ children }) => {
-  const [gridProps, setGridProps] = useState({
-    direction: "row",
-    justifyContent: "flex-start",
-    alignItems: "flex-start",
-  });
-  const [gap, setGap] = useState(10);
+const GridContext = createContext(initState);
 
-  const [spacing, setSpacing] = useState(0);
-
+const GridProvider = ({
+  children,
+  gap,
+  direction,
+  justifyContent,
+  alignItems,
+  spacing,
+}) => {
   return (
-    <GridContext.Provider value={{ gridProps, setGridProps, gap, setGap, spacing, setSpacing }}>
+    <GridContext.Provider
+      value={{ gap, direction, justifyContent, alignItems, spacing }}
+    >
       {children}
     </GridContext.Provider>
   );

@@ -1,5 +1,5 @@
-import React, { useContext, useEffect } from "react";
-import { GridContext } from "../utils/appContext";
+import React from "react";
+import { GridProvider } from "../utils/appContext";
 
 const Grid = ({
   children,
@@ -10,40 +10,27 @@ const Grid = ({
   alignItems = "flex-start",
   gap,
 }) => {
-  const { setGridProps, setGap, setSpacing } = useContext(GridContext);
-
-  useEffect(() => {
-    setGridProps({
-      direction: direction,
-      justifyContent: justifyContent,
-      alignItems: alignItems,
-    });
-    setGap(gap);
-    setSpacing(spacing);
-  }, [
-    direction,
-    justifyContent,
-    alignItems,
-    setGridProps,
-    setGap,
-    gap,
-    spacing,
-    setSpacing,
-  ]);
-
   return (
-    <div
-      style={{
-        display: "flex",
-        flex: 8,
-        margin: "0 auto",
-        width: "100%",
-        flexDirection: "row",
-        flexWrap: wrap,
-      }}
+    <GridProvider
+      spacing={spacing}
+      direction={direction}
+      justifyContent={justifyContent}
+      alignItems={alignItems}
+      gap={gap}
     >
-      {children}
-    </div>
+      <div
+        style={{
+          display: "flex",
+          flex: 8,
+          margin: "0 auto",
+          width: "100%",
+          flexDirection: "row",
+          flexWrap: wrap,
+        }}
+      >
+        {children}
+      </div>
+    </GridProvider>
   );
 };
 

@@ -3,16 +3,14 @@ import Col from "./components/Col";
 import Grid from "./components/Grid";
 import Row from "./components/Row";
 import TestGrid from "./components/TestGrid";
-import { GridProvider } from "./utils/appContext";
 
 function App() {
   return (
     <div className="app">
       <h1>Grid 1</h1>
-      <GridProvider>
       <Grid
         gap={10}
-        spacing={20}
+        spacing={10}
         wrap="wrap"
         // direction={"row"} //!also try this
         // justifyContent={"space-evenly"}
@@ -41,7 +39,6 @@ function App() {
           </Col>
         </Row>
       </Grid>
-      </GridProvider>
       <h1>Grid 2</h1>
       <TestGrid/>
     </div>
